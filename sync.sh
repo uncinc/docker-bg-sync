@@ -123,9 +123,9 @@ fi
 log_heading "Generating Unison profile"
 [ -d "${HOME}/.unison" ] || mkdir -p ${HOME}/.unison
 
-unisonsilent="true"
+unisonsilent="false"
 if [[ "$SYNC_VERBOSE" == "0" ]]; then
-  unisonsilent="false"
+  unisonsilent="true"
 fi
 
 nodelete=""
