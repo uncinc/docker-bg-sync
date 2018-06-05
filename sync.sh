@@ -20,10 +20,10 @@ log_error_exit() {
 
 # Create non-root user
 if [ "$UNISON_USER" != "root" ]; then
-  log_heading "Setting up non-root user ${UNISON_USER}."
+  log_heading "Setting up non-root user ${UNISON_USER}:${UNISON_GROUP} [${UNISON_UID}:${UNISON_GROUP}]."
   HOME="/home/${UNISON_USER}"
-  addgroup -g $UNISON_GID -S $UNISON_GROUP
-  adduser -u $UNISON_UID -D -S -G $UNISON_GROUP $UNISON_USER
+  getent group $UNISON_GROUP &>/dev/null || addgroup -g $UNISON_GID -S $UNISON_GROUP
+  id -u $UNISON_USER &>/dev/null || adduser -u $UNISON_UID -D -S -G $UNISON_GROUP $UNISON_USER
   mkdir -p ${HOME}/.unison
   chown -R ${UNISON_USER}:${UNISON_GROUP} ${HOME}
 fi
