@@ -34,10 +34,12 @@ fi
 
 # The source for the sync. This will also be recursively monitored by inotifywatch.
 : ${SYNC_SOURCE:="/source"}
+chown -R ${UNISON_USER}:${UNISON_GROUP} ${SYNC_SOURCE}
 
 # The destination for sync. When files are changed in the source, they are automatically
 # synced to the destination.
 : ${SYNC_DESTINATION:="/destination"}
+chown -R ${UNISON_USER}:${UNISON_GROUP} ${SYNC_DESTINATION}
 
 # The preferred approach to deal with conflicts
 : ${SYNC_PREFER:=$SYNC_SOURCE}
