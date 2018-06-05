@@ -160,6 +160,7 @@ silent=$unisonsilent
 # Files to ignore
 ignore = Path .git/*
 ignore = Path .idea/*
+ignore = Name .git*
 ignore = Name *___jb_tmp___*
 ignore = Name {.*,*}.sw[pon]
 
